@@ -53,6 +53,8 @@ hand-made Word invoices. All test PDFs are stored in `tests/fixtures/`.
 
 ## Recreate the test data and the scores
 
+Needs the development requirements (see "Run the tests" above).
+
 ```bash
 .venv/bin/python -m data_gen.generate --group A --count 300
 .venv/bin/python -m data_gen.generate --group B --count 300

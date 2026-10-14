@@ -87,6 +87,12 @@ in `vocab.py` is split:
 Rule: nothing from group B was copied into `app/labels.py` (checked with
 `grep` before measuring).
 
+One overlap exists: `vendors.py` skips text containing "Customer" or
+"Invoice to" so the buyer is never mistaken for the vendor. These are also
+two of group B's "Bill to" labels. They were in the code from the first
+version (general invoice knowledge, not copied from B) and only affect
+vendor matching, which scored 100% in blind B.
+
 ## How the data was used to test
 
 1. **`eval/evaluate.py`** scores exact match per field after normalisation,
@@ -174,6 +180,6 @@ from both. I expect the real score to be **lower than B**. Likely problems:
 - **Real typography**: ligatures, unusual fonts, the ₹ symbol (not used in the
   generator because standard PDF fonts lack it).
 - Everything visual is idealised: one font, no logos, no scans.
--- **Rule O3 on unseen wording**: group B always prints a currency, so the
+- **Rule O3 on unseen wording**: group B always prints a currency, so the
   "no currency" rule was measured only on group A (112 invoices, all correct)
   and in the unit and fixture tests.
