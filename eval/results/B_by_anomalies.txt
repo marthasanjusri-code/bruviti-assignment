@@ -1,0 +1,29 @@
+
+Invoices: 300    Overall field accuracy: 75.6%
+
+Field              Correct   Accuracy
+vendor             300/300     100.0%
+invoice_number     144/300      48.0%
+invoice_date       266/300      88.7%
+due_date           175/300      58.3%
+currency           266/300      88.7%
+subtotal           223/300      74.3%
+tax                205/300      68.3%
+total              235/300      78.3%
+
+Time per invoice: average 50 ms, slowest 196 ms (limit 1000 ms)
+
+Accuracy by anomalies:
+  amount_in_words                      n=49   ven: 100% num:  51% date:  88% due:  57% cur:  88% sub:  78% tax:  82% tot:  82%
+  currency_everywhere                  n=52   ven: 100% num:  56% date:  90% due:  54% cur:  90% sub:  79% tax:  79% tot:  85%
+  footer                               n=173  ven: 100% num:  51% date:  87% due:  57% cur:  87% sub:  71% tax:  66% tot:  75%
+  fullwidth_digits                     n=6    ven: 100% num:  67% date:  50% due:  50% cur:  50% sub:  67% tax:  67% tot:  33%
+  label_noise_dots                     n=36   ven: 100% num:  47% date:  92% due:  61% cur:  92% sub:  75% tax:  69% tot:  83%
+  label_noise_no_colon                 n=28   ven: 100% num:  54% date:  96% due:  43% cur:  96% sub:  79% tax:  68% tot:  89%
+  label_noise_upper                    n=33   ven: 100% num:  36% date:  91% due:  76% cur:  91% sub:  76% tax:  70% tot:  79%
+  multi_page                           n=26   ven: 100% num:  38% date:  92% due:  50% cur:  92% sub:  81% tax:  65% tot:  81%
+  none                                 n=21   ven: 100% num:  33% date:  95% due:  62% cur:  95% sub:  76% tax:  71% tot:  86%
+  round_off                            n=18   ven: 100% num:  50% date:  94% due:  44% cur:  94% sub:  78% tax:  89% tot:  89%
+  ship_to                              n=92   ven: 100% num:  52% date:  80% due:  54% cur:  80% sub:  72% tax:  67% tot:  73%
+  watermark                            n=44   ven: 100% num:  55% date:  91% due:  55% cur:  91% sub:  75% tax:  57% tot:  80%
+  zero_tax                             n=16   ven: 100% num:  56% date:  94% due:  50% cur:  94% sub:  81% tax:  69% tot:  88%

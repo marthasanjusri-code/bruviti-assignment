@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invoice field extraction</title>
+  <style>
+    :root {
+      --paper: #f4f7f6; --ink: #1b2a2f; --muted: #56676c; --line: #d3dcda;
+      --blue: #2f5d8a; --good: #2e7d4f; --mid: #a15c07; --low: #b3261e;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink);
+           font: 16px/1.5 system-ui, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 1.5rem; margin: 0 0 4px; }
+    .lead { color: var(--muted); margin: 0 0 24px; }
+    form { display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+           padding: 16px; background: #fff; border: 1px solid var(--line); border-radius: 6px; }
+    button { background: var(--blue); color: #fff; border: 0; border-radius: 4px;
+             padding: 10px 18px; font: inherit; cursor: pointer; }
+    button:disabled { opacity: 0.6; cursor: wait; }
+    button:focus-visible, input:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+    #status { margin: 16px 0; color: var(--muted); min-height: 1.5em; }
+    #status.error { color: var(--low); }
+    table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+    .value { font-variant-numeric: tabular-nums; word-break: break-word; }
+    .empty { color: var(--muted); font-style: italic; }
+    .meter { display: flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; }
+    .bar { width: 80px; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+    .bar span { display: block; height: 100%; }
+    #warnings { margin: 16px 0 0; padding: 12px 16px 12px 32px; background: #fff4e0;
+                border: 1px solid #f0c98a; border-radius: 6px; color: #6b3d04; }
+    details { margin-top: 16px; }
+    pre { background: #fff; border: 1px solid var(--line); padding: 12px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Invoice field extraction</h1>
+  <p class="lead">Upload a supplier invoice PDF to see its eight header fields and how sure the reader is about each one.</p>
+
+  <form id="upload-form">
+    <input type="file" id="file" accept=".pdf,application/pdf" aria-label="Invoice PDF">
+    <button type="submit" id="submit">Extract fields</button>
+  </form>
+
+  <p id="status" role="status"></p>
+
+  <section id="result" hidden>
+    <table>
+      <thead><tr><th>Field</th><th>Value</th><th>Confidence</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <ul id="warnings" hidden></ul>
+    <details>
+      <summary>Show raw JSON</summary>
+      <pre id="raw"></pre>
+    </details>
+  </section>
+</main>
+
+<script>
+  const FIELDS = ["vendor", "invoice_number", "invoice_date", "due_date",
+                  "currency", "subtotal", "tax", "total"];
+
+  const form = document.getElementById("upload-form");
+  const fileInput = document.getElementById("file");
+  const button = document.getElementById("submit");
+  const statusLine = document.getElementById("status");
+
+  function showStatus(message, isError = false) {
+    statusLine.textContent = message;
+    statusLine.className = isError ? "error" : "";
+  }
+
+  function levelColour(score) {
+    if (score >= 0.85) return "var(--good)";
+    if (score >= 0.6) return "var(--mid)";
+    return "var(--low)";
+  }
+
+  function render(result) {
+    const rows = document.getElementById("rows");
+    rows.replaceChildren();
+
+    for (const name of FIELDS) {
+      const value = result[name];
+      const score = (result.confidence || {})[name] ?? 0;
+
+      const row = document.createElement("tr");
+
+      const nameCell = document.createElement("td");
+      nameCell.textContent = name;
+
+      const valueCell = document.createElement("td");
+      valueCell.className = "value";
+      if (value === null || value === undefined) {
+        valueCell.textContent = "not found";
+        valueCell.classList.add("empty");
+      } else {
+        valueCell.textContent = value;
+      }
+
+      const scoreCell = document.createElement("td");
+      const meter = document.createElement("div");
+      meter.className = "meter";
+      const bar = document.createElement("div");
+      bar.className = "bar";
+      const fill = document.createElement("span");
+      fill.style.width = Math.round(score * 100) + "%";
+      fill.style.background = levelColour(score);
+      bar.appendChild(fill);
+      const label = document.createElement("span");
+      label.textContent = score.toFixed(2);
+      meter.append(bar, label);
+      scoreCell.appendChild(meter);
+
+      row.append(nameCell, valueCell, scoreCell);
+      rows.appendChild(row);
+    }
+
+    const warningList = document.getElementById("warnings");
+    warningList.replaceChildren();
+    for (const text of result.warnings || []) {
+      const item = document.createElement("li");
+      item.textContent = text;
+      warningList.appendChild(item);
+    }
+    warningList.hidden = warningList.children.length === 0;
+
+    document.getElementById("raw").textContent = JSON.stringify(result, null, 2);
+    document.getElementById("result").hidden = false;
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const file = fileInput.files[0];
+    if (!file) {
+      showStatus("Choose a PDF file first.", true);
+      return;
+    }
+
+    const data = new FormData();
+    data.append("file", file);
+
+    button.disabled = true;
+    showStatus("Reading " + file.name + " ...");
+
+    try {
+      const response = await fetch("/extract", { method: "POST", body: data });
+      if (!response.ok) {
+        throw new Error("the server replied with HTTP " + response.status);
+      }
+      render(await response.json());
+      showStatus("Extracted fields from " + file.name + ".");
+    } catch (error) {
+      showStatus("Could not extract fields: " + error.message + ".", true);
+    } finally {
+      button.disabled = false;
+    }
+  });
+
+  fileInput.addEventListener("change", () => showStatus(""));
+</script>
+</body>
+</html>

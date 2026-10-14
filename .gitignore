@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+.vscode/
+data_gen/output/
+*.pyc
+.pytest_cache/

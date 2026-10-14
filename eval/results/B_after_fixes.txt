@@ -1,0 +1,14 @@
+
+Invoices: 300    Overall field accuracy: 94.4%
+
+Field              Correct   Accuracy
+vendor             300/300     100.0%
+invoice_number     284/300      94.7%
+invoice_date       300/300     100.0%
+due_date           294/300      98.0%
+currency           300/300     100.0%
+subtotal           261/300      87.0%
+tax                258/300      86.0%
+total              269/300      89.7%
+
+Time per invoice: average 52 ms, slowest 197 ms (limit 1000 ms)

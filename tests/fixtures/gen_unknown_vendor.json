@@ -1,0 +1,34 @@
+{
+  "vendor": "unknown",
+  "invoice_number": "96088",
+  "invoice_date": "2026-01-09",
+  "due_date": null,
+  "currency": "INR",
+  "subtotal": 1572.5,
+  "tax": 188.7,
+  "total": 1761.0,
+  "meta": {
+    "group": "A",
+    "scenario": "unknown_vendor",
+    "layout": "classic",
+    "kind": "invoice",
+    "printed_name": "Acme Office Supplies Pvt Ltd",
+    "country": "IN",
+    "date_format": "{dd}-{mon}-{yyyy}",
+    "due_mode": "neither",
+    "amount_style": "en",
+    "currency_style": "symbol_before",
+    "labels": {
+      "number": "Invoice #",
+      "date": "Issue Date:",
+      "due": "Due Date:",
+      "terms": "Payment Terms:",
+      "subtotal": "Net Amount",
+      "total": "Total",
+      "bill_to": "Sold to"
+    },
+    "anomalies": [
+      "round_off"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+Wrote 300 invoices to data_gen\output\B
+
+  amount style: de_space                             28
+  amount style: en                                   28
+  amount style: en_plain                            145
+  amount style: in_lakh                              57
+  amount style: jp                                   42
+  anomaly: amount_in_words                           49
+  anomaly: currency_everywhere                       52
+  anomaly: footer                                   173
+  anomaly: fullwidth_digits                           6
+  anomaly: label_noise_dots                          36
+  anomaly: label_noise_no_colon                      28
+  anomaly: label_noise_upper                         33
+  anomaly: multi_page                                26
+  anomaly: round_off                                 18
+  anomaly: ship_to                                   92
+  anomaly: watermark                                 44
+  anomaly: zero_tax                                  16
+  country: DE                                        56
+  country: GB                                        82
+  country: IN                                        57
+  country: JP                                        42
+  country: US                                        63
+  currency style: alt_symbol                        126
+  currency style: code_after                        174
+  due mode: both_agree                               42
+  due mode: both_disagree                            30
+  due mode: due_only                                106
+  due mode: neither                                  44
+  due mode: terms_only                               78
+  has decoys (PO / customer no. / order date)       208
+  layout: compact                                   159
+  layout: side                                      141
+  scenario: mismatch                                 20
+  scenario: non_invoice                              34
+  scenario: normal                                  209
+  scenario: unknown_vendor                           37

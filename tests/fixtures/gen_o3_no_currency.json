@@ -1,0 +1,34 @@
+{
+  "vendor": "Blue Harbour Logistics",
+  "invoice_number": "BHL/2026/3046",
+  "invoice_date": "2026-04-28",
+  "due_date": "2026-05-13",
+  "currency": "GBP",
+  "subtotal": 26160.0,
+  "tax": 5232.0,
+  "total": 31392.0,
+  "meta": {
+    "group": "A",
+    "scenario": "normal",
+    "layout": "classic",
+    "kind": "invoice",
+    "printed_name": "Blue Harbour Logistics Ltd",
+    "country": "GB",
+    "date_format": "{dd}/{mm}/{yyyy}",
+    "due_mode": "due_only",
+    "amount_style": "en",
+    "currency_style": "none",
+    "labels": {
+      "number": "INVOICE NO:",
+      "date": "DATE:",
+      "due": "PAYMENT DUE:",
+      "terms": "Payment Terms:",
+      "subtotal": "NET AMOUNT",
+      "total": "AMOUNT DUE",
+      "bill_to": "Sold to"
+    },
+    "anomalies": [
+      "label_noise_upper"
+    ]
+  }
+}

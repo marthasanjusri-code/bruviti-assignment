@@ -1,0 +1,37 @@
+{
+  "vendor": "Sakura Precision",
+  "invoice_number": "SP008904",
+  "invoice_date": "2026-02-19",
+  "due_date": "2026-04-05",
+  "currency": "JPY",
+  "subtotal": 14758400.0,
+  "tax": 1475840.0,
+  "total": 16234240.0,
+  "meta": {
+    "group": "A",
+    "scenario": "normal",
+    "layout": "classic",
+    "kind": "invoice",
+    "printed_name": "SAKURA PRECISION K.K.",
+    "country": "JP",
+    "date_format": "{yyyy}.{mm}.{dd}",
+    "due_mode": "due_only",
+    "amount_style": "jp",
+    "currency_style": "code_before",
+    "labels": {
+      "number": "INVOICE NO:",
+      "date": "請求日",
+      "due": "お支払期限",
+      "terms": "Terms",
+      "subtotal": "NET AMOUNT",
+      "total": "合計",
+      "bill_to": "Bill to:"
+    },
+    "anomalies": [
+      "multi_page",
+      "label_noise_upper",
+      "footer",
+      "currency_everywhere"
+    ]
+  }
+}

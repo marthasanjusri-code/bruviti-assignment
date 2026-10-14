@@ -1,0 +1,34 @@
+{
+  "vendor": "Blue Harbour Logistics",
+  "invoice_number": null,
+  "invoice_date": null,
+  "due_date": null,
+  "currency": null,
+  "subtotal": null,
+  "tax": null,
+  "total": null,
+  "meta": {
+    "group": "A",
+    "scenario": "non_invoice",
+    "layout": "grid",
+    "kind": "quotation",
+    "printed_name": "BLUE HARBOUR LOGISTICS LTD",
+    "country": "GB",
+    "date_format": "{d} {month} {yyyy}",
+    "due_mode": "terms_only",
+    "amount_style": "en",
+    "currency_style": "symbol_before",
+    "labels": {
+      "number": "Invoice #",
+      "date": "Issue Date:",
+      "due": "Due:",
+      "terms": "Payment Terms:",
+      "subtotal": "Subtotal",
+      "total": "Grand Total",
+      "bill_to": "Sold to"
+    },
+    "anomalies": [
+      "currency_everywhere"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "vendor": "Kestrel Components",
+  "invoice_number": "KC-1503",
+  "invoice_date": "2026-03-11",
+  "due_date": "2026-03-26",
+  "currency": "USD",
+  "subtotal": 1014.4,
+  "tax": 73.54,
+  "total": 1087.94,
+  "meta": {
+    "group": "A",
+    "scenario": "normal",
+    "layout": "classic",
+    "kind": "invoice",
+    "printed_name": "Kestrel Components Inc.",
+    "country": "US",
+    "date_format": "{mm}/{dd}/{yyyy}",
+    "due_mode": "terms_only",
+    "amount_style": "en",
+    "currency_style": "code_before",
+    "labels": {
+      "number": "Invoice No:",
+      "date": "Date:",
+      "due": "Due:",
+      "terms": "Terms",
+      "subtotal": "Sub total",
+      "total": "Balance Due",
+      "bill_to": "Sold to"
+    },
+    "anomalies": [
+      "footer",
+      "watermark",
+      "amount_in_words"
+    ]
+  }
+}

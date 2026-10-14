@@ -1,0 +1,34 @@
+
+Invoices: 300    Overall field accuracy: 94.4%
+
+Field              Correct   Accuracy
+vendor             300/300     100.0%
+invoice_number     284/300      94.7%
+invoice_date       300/300     100.0%
+due_date           294/300      98.0%
+currency           300/300     100.0%
+subtotal           261/300      87.0%
+tax                258/300      86.0%
+total              269/300      89.7%
+
+Time per invoice: average 51 ms, slowest 219 ms (limit 1000 ms)
+
+Accuracy by labels.total:
+  AMOUNT PAYABLE                       n=9    ven: 100% num: 100% date: 100% due: 100% cur: 100% sub:  89% tax: 100% tot: 100%
+  Amount Payable                       n=46   ven: 100% num:  98% date: 100% due:  98% cur: 100% sub:  70% tax:  70% tot:  74%
+  Amount Payable .....                 n=8    ven: 100% num: 100% date: 100% due: 100% cur: 100% sub:  88% tax:  88% tot:  88%
+  ENDBETRAG                            n=2    ven: 100% num: 100% date: 100% due: 100% cur: 100% sub: 100% tax: 100% tot: 100%
+  Endbetrag                            n=10   ven: 100% num: 100% date: 100% due: 100% cur: 100% sub:  70% tax:  70% tot:  70%
+  Endbetrag .....                      n=2    ven: 100% num: 100% date: 100% due: 100% cur: 100% sub: 100% tax: 100% tot: 100%
+  INVOICE TOTAL                        n=4    ven: 100% num: 100% date: 100% due: 100% cur: 100% sub: 100% tax: 100% tot: 100%
+  Invoice Total                        n=48   ven: 100% num: 100% date: 100% due: 100% cur: 100% sub:  98% tax:  96% tot: 100%
+  Invoice Total .....                  n=9    ven: 100% num:  89% date: 100% due: 100% cur: 100% sub: 100% tax: 100% tot: 100%
+  PLEASE PAY                           n=4    ven: 100% num: 100% date: 100% due: 100% cur: 100% sub: 100% tax: 100% tot: 100%
+  Please Pay                           n=51   ven: 100% num:  98% date: 100% due: 100% cur: 100% sub:  84% tax:  84% tot:  88%
+  Please Pay .....                     n=3    ven: 100% num: 100% date: 100% due: 100% cur: 100% sub:  67% tax:  33% tot:  67%
+  TOTAL PAYABLE                        n=5    ven: 100% num: 100% date: 100% due: 100% cur: 100% sub: 100% tax: 100% tot: 100%
+  Total Payable                        n=44   ven: 100% num:  93% date: 100% due:  98% cur: 100% sub:  98% tax:  95% tot: 100%
+  Total Payable .....                  n=10   ven: 100% num:  90% date: 100% due: 100% cur: 100% sub:  90% tax:  90% tot: 100%
+  ZU ZAHLEN                            n=2    ven: 100% num: 100% date: 100% due: 100% cur: 100% sub: 100% tax: 100% tot: 100%
+  Zu zahlen                            n=14   ven: 100% num: 100% date: 100% due: 100% cur: 100% sub:  86% tax:  86% tot:  93%
+  Zu zahlen .....                      n=1    ven: 100% num: 100% date: 100% due: 100% cur: 100% sub: 100% tax: 100% tot: 100%

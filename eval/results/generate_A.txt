@@ -1,0 +1,37 @@
+Wrote 300 invoices to data_gen\output\A
+
+  amount style: de                                   46
+  amount style: en                                  213
+  amount style: jp                                   41
+  anomaly: amount_in_words                           50
+  anomaly: currency_everywhere                       48
+  anomaly: footer                                   181
+  anomaly: fullwidth_digits                           8
+  anomaly: label_noise_dots                          33
+  anomaly: label_noise_no_colon                      38
+  anomaly: label_noise_upper                         30
+  anomaly: multi_page                                14
+  anomaly: round_off                                 14
+  anomaly: ship_to                                   94
+  anomaly: watermark                                 34
+  anomaly: zero_tax                                  13
+  country: DE                                        46
+  country: GB                                       104
+  country: IN                                        57
+  country: JP                                        41
+  country: US                                        52
+  currency style: code_before                        98
+  currency style: none                              112
+  currency style: symbol_before                      90
+  due mode: both_agree                               41
+  due mode: both_disagree                            26
+  due mode: due_only                                 93
+  due mode: neither                                  47
+  due mode: terms_only                               93
+  has decoys (PO / customer no. / order date)       201
+  layout: classic                                   146
+  layout: grid                                      154
+  scenario: mismatch                                 13
+  scenario: non_invoice                              26
+  scenario: normal                                  236
+  scenario: unknown_vendor                           25
